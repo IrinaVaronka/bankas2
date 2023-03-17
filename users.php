@@ -5,11 +5,11 @@ $page = (int) ($_GET['page'] ?? 1);
 
 $sort = $_GET['sort'] ?? '';    //сортировка;
 
-if ($sort == 'name_asc') {
-    usort($users, fn($a, $b) => $a['surname'] <=> $b['name']);
+if ($sort == 'surname_asc') {
+    usort($users, fn($a, $b) => $a['surname'] <=> $b['surname']);
 }
-elseif ($sort == 'name_desc') {
-    usort($users, fn($a, $b) => $b['surname'] <=> $a['name']);
+elseif ($sort == 'surname_desc') {
+    usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
 
 
@@ -33,9 +33,8 @@ elseif ($sort == 'name_desc') {
     <form action="" method="get">
         <fieldset>
             <select name="sort">
-                <option selected>Open to sort</option>
-                <option value="name_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z</option>
-                <option value="name_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A</option>
+                <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z</option>
+                <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A</option>
             </select>
             <button type="submit" class="btn btn btn-secondary btn-sm">sort</button>
         </fieldset>
@@ -44,10 +43,9 @@ elseif ($sort == 'name_desc') {
     <ul>
         <?php foreach($users as $user) : ?>
             <table class="table table-success table-striped">
-            <b>Account number:</b> <?= $user['account-number'] ?> <i><?= $user['name'] ?> <?= $user['surname'] ?></i> <u><?= $user['id'] ?></u>
-            <button type="submit" class="btn btn-danger btn-sm">delete</button>
+            <b>Account number:</b> <?= $user['account'] ?> <i><?= $user['name'] ?> <?= $user['surname'] ?></i> <u><?= $user['id'] ?></u>
             <form action="http://localhost/bankas2/delete.php?id=<?= $user['id'] ?>" method="post">
-    
+                <button type="submit" class="btn btn-danger btn-sm">delete</button>
             </form>
             </table>
         <?php endforeach ?>

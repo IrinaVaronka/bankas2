@@ -5,15 +5,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
     
-
+    $account = json_decode(file_get_contents(__DIR__ . '/account.json'));
+    $account++;
+    file_put_contents(__DIR__ . '/id.json', json_encode($account));
     
 
 
     $user = [
-        'account-number' => (int) $_POST['account-number'],
+        'account-number' => $account,
         'id' => (int) $_POST['id'],
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
+        'initial amount' => 0,
     ];
 
     $users[] = $user;
@@ -22,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     file_put_contents(__DIR__ . '/users.ser', $users);
 
     $_SESSION['msg'] = ['type' => 'ok', 'text' => 'New account was created'];
-    header('Location: http://localhost/bankas2/users.php?sort=id_desc');
+    header('Location: http://localhost/bankas2/users.php'); 
     die;
 }
 
@@ -47,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2>Create new account</h2>
             <input type="text" name="name" class="form-control" placeholder="Name" required>
             <input type="text" name="surname" class="form-control" placeholder="Surname" required>
-            <input type="text" name="account-number" class="form-control" placeholder="Account number" required>
+            <input type="text" name="account-number" class="form-control" placeholder="Account number" <?= $account['account'] ?> required>
             <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>
             <button type="submit" class="btn btn-lg btn-primary btn-block">Add new account</button>
         </form>
