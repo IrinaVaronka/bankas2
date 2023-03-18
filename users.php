@@ -43,7 +43,7 @@ elseif ($sort == 'surname_desc') {
     <ul>
         <?php foreach($users as $user) : ?>
             <table class="table table-success table-striped">
-            <b>Account number:</b> <?= $user['account'] ?> <i><?= $user['name'] ?> <?= $user['surname'] ?></i> <u><?= $user['id'] ?></u>
+            <?= $user['account'] ?> <i><?= $user['name'] ?> <?= $user['surname'] ?></i> <u><?= $user['id'] ?></u>
             <form action="http://localhost/bankas2/delete.php?id=<?= $user['id'] ?>" method="post">
                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
             </form>

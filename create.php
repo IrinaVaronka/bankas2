@@ -5,18 +5,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
     
-    $account = json_decode(file_get_contents(__DIR__ . '/account.json'));
-    $account++;
-    file_put_contents(__DIR__ . '/id.json', json_encode($account));
-    
 
 
     $user = [
-        'account-number' => $account,
         'id' => (int) $_POST['id'],
+        'account' => (int) $_POST['account'],
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
-        'initial amount' => 0,
+       
     ];
 
     $users[] = $user;
@@ -50,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2>Create new account</h2>
             <input type="text" name="name" class="form-control" placeholder="Name" required>
             <input type="text" name="surname" class="form-control" placeholder="Surname" required>
-            <input type="text" name="account-number" class="form-control" placeholder="Account number" <?= $account['account'] ?> required>
+            <input type="text" name="account" class="form-control" placeholder="Account number" required>
             <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>
             <button type="submit" class="btn btn-lg btn-primary btn-block">Add new account</button>
         </form>
