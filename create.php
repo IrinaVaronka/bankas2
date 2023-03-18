@@ -41,10 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Create</title>
 </head>
 <body>
+<?php require __DIR__ . '/menu.php' ?>
     <div class="container">
         <form action="" class="form-create" method="post">
             <h2>Create new account</h2>
-            <input type="text" name="name" class="form-control" placeholder="Name" required>
+            <input type="text" name="name" class="form-control" placeholder="Name (from 3 characters)" required>
             <input type="text" name="surname" class="form-control" placeholder="Surname" required>
             <input type="text" name="account" class="form-control" placeholder="Account number" required>
             <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>

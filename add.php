@@ -1,35 +1,43 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
-
+    $id = $_GET['id'];
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-    
-  
 
-    $user = [
-        'id' => (int) $_POST['id'],
-        'account' => (int) $_POST['account'],
-        'name' => $_POST['name'],
-        'surname' => $_POST['surname'],
-       // 'initial-amount' => 0,
-       // 'idPhp' => getUnique(100)
-       
-    ];
+    foreach ($users as &$user) {
+        if ($user['id'] == $id) {
+             $add = $_POST['funds'];
+             $user['funds'] = $user['funds']  + $add;
+            file_put_contents(__DIR__ . '/users.ser', serialize($users));
 
-    $users[] = $user;
+            break;
+        }
+    }
 
-    $users = serialize($users);
-    file_put_contents(__DIR__ . '/users.ser', $users);
-
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Funds were added'];
-    header('Location: http://localhost/bankas2/users.php'); 
-    die;
+    header('Location: http://localhost/bankas2/users.php');
+    // die;
 }
 
 
+//GET
 
+$clients = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+
+$id = $_GET['id'];
+$find = false;
+foreach ($clients as $client) {
+    if ($client['id'] == $id) {
+        $find = true;
+        break;
+    }
+}
+
+if (!$find) {
+    die('user not found');
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="container">
-        <form action="" class="form-create" method="post">
+        <form action="?id=<?= $user['user_id'] ?>" method="post">
             <h2>Add funds</h2>
-           
             <input type="text" name="account" class="form-control" value="" placeholder="Account number" required>
-            <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>
+            
             <button type="submit" class="btn btn-lg btn-primary btn-block">save</button>
         </form>
     </div>

@@ -63,7 +63,7 @@ elseif ($sort == 'surname_desc') {
                     <td><?= $user['account'] ?></td>
                     <td><?= $user['id'] ?></td>
                     <td><?= $user['amount'] ?></td>
-                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Add funds</a></th>
+                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/add.php?id=<?= $user['id'] ?>">Add funds</a></th>
                     <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Deduct funds</a></th>
                     
                     </tr>
