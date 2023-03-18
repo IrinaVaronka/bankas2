@@ -49,7 +49,7 @@ elseif ($sort == 'surname_desc') {
              <th scope="col">Surname</th>
              <th scope="col">Account number</th>
              <th scope="col">Personal ID</th>
-             <th scope="col">Account`s amount
+             <th scope="col">Account`s amount</th>
              <th colspan="2" class="table-active"><form action="http://localhost/bankas2/delete.php?id=<?= $user['id'] ?>" method="post">
                 <button type="submit" class="btn btn-danger btn">delete account</button>
             </form></th>

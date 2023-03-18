@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'account' => (int) $_POST['account'],
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
+        'amount' => 0,   
        
     ];
 
@@ -47,8 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2>Create new account</h2>
             <input type="text" name="name" class="form-control" placeholder="Name (from 3 characters)" required>
             <input type="text" name="surname" class="form-control" placeholder="Surname" required>
-            <input type="text" name="account" class="form-control" placeholder="Account number" required>
+            <input type="text" name="account" class="form-control" readonly placeholder="Account number" required>
             <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>
+            <input type="text" name="amount" class="form-control" readonly placeholder="Amount">
             <button type="submit" class="btn btn-lg btn-primary btn-block">Add new account</button>
         </form>
     </div>

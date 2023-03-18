@@ -1,14 +1,14 @@
 <?php
 
-// function getUnique($to)
-// {
-//     static $ids = [];
-//     do {
-//         $id = rand(1, $to);
-//     } while(in_array($id, $ids));
-//     $ids[] = $id;
-//     return $id;
-// }
+function getUnique($to)
+{
+    static $ids = [];
+    do {
+        $id = rand(1, $to);
+    } while(in_array($id, $ids));
+    $ids[] = $id;
+    return $id;
+}
 
 // function randString()
 // {

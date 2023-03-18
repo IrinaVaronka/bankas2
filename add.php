@@ -21,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 //GET
 
-$clients = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+$users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 $id = $_GET['id'];
 $find = false;
-foreach ($clients as $client) {
-    if ($client['id'] == $id) {
+foreach ($users as $user) {
+    if ($user['id'] == $id) {
         $find = true;
         break;
     }
@@ -52,11 +52,15 @@ if (!$find) {
 </head>
 <body>
     <div class="container">
-        <form action="?id=<?= $user['user_id'] ?>" method="post">
+        <form class="form-create" action="?id=<?= $user['id'] ?>" method="post">
             <h2>Add funds</h2>
-            <input type="text" name="account" class="form-control" value="" placeholder="Account number" required>
-            
-            <button type="submit" class="btn btn-lg btn-primary btn-block">save</button>
+            <label>User`s name: </label>
+            <input type="text" name="name" class="form-control" readonly value="<?= $user['name'] ?>">
+            <label>User`s surname: </label>
+            <input type="text" name="name" class="form-control" readonly value="<?= $user['surname'] ?>">
+            <label>Add funds, EUR: </label>
+            <input type="text" name="name" class="form-control"  value="<?= $user['amount'] ?>">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
         </form>
     </div>
 </body>
