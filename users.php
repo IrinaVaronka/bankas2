@@ -42,11 +42,37 @@ elseif ($sort == 'surname_desc') {
     </form>
     <ul>
         <?php foreach($users as $user) : ?>
-            <table class="table table-success table-striped">
-            <?= $user['account'] ?> <i><?= $user['name'] ?> <?= $user['surname'] ?></i> <u><?= $user['id'] ?></u>
-            <form action="http://localhost/bankas2/delete.php?id=<?= $user['id'] ?>" method="post">
-                <button type="submit" class="btn btn-danger btn-sm">delete</button>
-            </form>
+            <table class="table table-sm table-success table-striped table-bordered">
+            <thead>
+            <tr>
+             <th scope="col">Name</th>
+             <th scope="col">Surname</th>
+             <th scope="col">Account number</th>
+             <th scope="col">Personal ID</th>
+             <th scope="col">Account`s amount
+             <th colspan="2" class="table-active"><form action="http://localhost/bankas2/delete.php?id=<?= $user['id'] ?>" method="post">
+                <button type="submit" class="btn btn-danger btn">delete account</button>
+            </form></th>
+            
+            </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                    <td scope="row"><?= $user['name'] ?></th>
+                    <td><?= $user['surname'] ?></td>
+                    <td><?= $user['account'] ?></td>
+                    <td><?= $user['id'] ?></td>
+                    <td><?= $user['amount'] ?></td>
+                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Add funds</a></th>
+                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Deduct funds</a></th>
+                    
+                    </tr>
+            
+            </tbody>
+            
+             
+            
+           
             </table>
         <?php endforeach ?>
     </ul>

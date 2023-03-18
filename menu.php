@@ -6,8 +6,6 @@
 
 
 <a class="btn btn-info" href="http://localhost/bankas2/create.php">Add new account</a>
-<a class="btn btn-info" href="http://localhost/9-JS-PHP/014/edit.php?id=<?= $user['id'] ?>">Deduct funds</a>
-<a class="btn btn-info" href="http://localhost/9-JS-PHP/014/edit.php?id=<?= $user['id'] ?>">Add funds</a>
 
 <?php
     if (isset($_SESSION['msg'])) {
@@ -15,14 +13,19 @@
         unset($_SESSION['msg']);
         $color = match($msg['type']) {
             'error' => 'crimson',
-            'ok' => 'green',
+            'ok' => 'skyblue',
             default => 'gray'
         };
     }
 ?>
 
 <?php if(isset($msg)) : ?>
-<div class="alert alert-success" role="alert" style="color: <?= $color ?>">
+<h2 style="color: <?= $color ?>">
     <?= $msg['text'] ?>
-</div>
+</h2>
 <?php endif ?>
+
+
+<!-- <div class="alert alert-success" role="alert" style="color: <?= $color ?>">
+    <?= $msg['text'] ?>
+</div> -->
