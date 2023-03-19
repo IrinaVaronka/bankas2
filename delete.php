@@ -11,6 +11,15 @@ $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 $users = array_filter($users, fn($users) => $users['id'] != $id);
 
+
+foreach($users as $user) {
+    if ($user['amount'] > 0) {
+        $_SESSION['msg'] = ['type' => 'error', 'text' => 'An account with funds cannot be deleted.'];
+        header('Location: http://localhost/bankas2/users.php');
+        die;
+    }
+}
+
 $users = serialize($users);
 file_put_contents(__DIR__ . '/users.ser', $users);
 

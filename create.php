@@ -15,6 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: http://localhost/bankas2/create.php');
              die;
              } 
+
+        if (strlen($_POST['id']) > 11 || strlen($_POST['id']) < 11) {
+                $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal ID should have 11 digits'];
+                header('Location: http://localhost/bankas2/create.php');
+                die;
+            }     
         }  
     
 
@@ -26,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $user = [
-        'id' => $id,
-        'account' => $account,
+        'id' => (int) $_POST['id'],
+        'account' => $_POST['account'],
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
         'amount' => $_POST['amount'],   
@@ -69,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" name="name" class="form-control" placeholder="Name (from 3 characters)" required>
             <input type="text" name="surname" class="form-control" placeholder="Surname" required>
             <input type="text" name="account" class="form-control" readonly placeholder="Account number" 
-            value="<?= 'LT' . rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) ?>">
+            value="<?= 'LT' . rand(0, 9) . rand(0, 9)  . '0014'  . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9)  . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) ?>">
             <input type="text" name="id" class="form-control" placeholder="Personal identification number" required>
             <input type="text" name="amount" class="form-control" readonly placeholder="Amount" value="0">
             <button type="submit" class="btn btn-lg btn-primary btn-block">Add new account</button>

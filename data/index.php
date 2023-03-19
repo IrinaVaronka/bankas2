@@ -30,30 +30,13 @@ function getUnique($to)
 // }
 
 
-// function checkName(){
-//     $errors= ' ';
-//     foreach($users as $k => $v) {
-//         if (strlen($name) > 3) {
-//     $errors .= "<li>Name should be more then 3 characters</li>";
-//         }
-//     }
-//     return $errors;
-// }
+
 
 function funds() {
     $balance = rand(0,3000);
     return $balance;
 }
-
-$nameLen = strlen ($_POST ["name"]);  
-$length = strlen($nameLen);  
-  
-if ( $length < 3) {  
-    $ErrMsg = "Name must have min 3 digits.";  
-            echo $ErrMsg;  
-} else {  
-    echo "Your name is: " .$nameLen;  
-}  
+ 
 
 $users = array_map(fn($_) => ['id' => getUnique(100)]);
 
