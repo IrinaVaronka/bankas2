@@ -6,6 +6,7 @@
 
 
 <a class="btn btn-success" href="http://localhost/bankas2/create.php">Add new account</a>
+<a class="btn btn-success" href="http://localhost/bankas2/users.php">Meniu</a>
 
 <?php
     if (isset($_SESSION['msg'])) {
