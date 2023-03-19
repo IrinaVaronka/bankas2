@@ -14,7 +14,7 @@
         unset($_SESSION['msg']);
         $color = match($msg['type']) {
             'error' => 'crimson',
-            'ok' => 'skyblue',
+            'ok' => 'green',
             default => 'gray'
         };
     }
@@ -27,6 +27,3 @@
 <?php endif ?>
 
 
-<!-- <div class="alert alert-success" role="alert" style="color: <?= $color ?>">
-    <?= $msg['text'] ?>
-</div> -->

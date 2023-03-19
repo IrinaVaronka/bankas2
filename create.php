@@ -4,6 +4,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
+   
+
     foreach($users as $user) {
         if (strlen($_POST['name']) < 3 || strlen($_POST['surname']) < 3) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is too short'];
@@ -25,7 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal ID should have 11 digits'];
                 header('Location: http://localhost/bankas2/create.php');
                 die;
-            }     
+            }  
+        if ($user['id'] == (int) $_POST['id']) {
+                $_SESSION['msg'] = ['type' => 'error', 'text' => 'Such personal ID already exist'];
+                header('Location: http://localhost/bankas2/create.php?id='.$id);
+                die;
+            }   
         }  
     
 

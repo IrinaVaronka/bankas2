@@ -19,13 +19,11 @@
     <div class="container">
         <form class="form-signin" action="?id=<?= $user['id'] ?>" method="post">
             <h2>Log in</h2>
-            <label>User`s name: </label>
-            <input type="text" name="name" class="form-control" readonly value="<?= $user['name'] ?>">
-            <label>User`s surname: </label>
-            <input type="text" name="name" class="form-control" readonly value="<?= $user['surname'] ?>">
-            <label>Add funds, EUR: </label>
-            <input type="text" name="" class="form-control"  value="<?= $user['amount'] ?>">
-            <button type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
+            <label>Login: </label>
+            <input type="text" name="name" class="form-control"  value="<?= $user['name'] ?>">
+            <label>Password: </label>
+            <input type="password" name="name" class="form-control" value="<?= $user['surname'] ?>">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Enter</button>
         </form>
     </div>
 </body>

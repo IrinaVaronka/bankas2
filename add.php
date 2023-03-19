@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         }
     }
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'You`ve added funds'];
+    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'You have added funds'];
     header('Location: http://localhost/bankas2/users.php?id='.$id);
     die;
 }
