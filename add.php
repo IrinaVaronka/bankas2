@@ -1,31 +1,34 @@
 <?php
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_GET['id'];
+
+
+    $id = (int) $_GET['id'];
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-
-    foreach ($users as &$user) {
+    
+    foreach($users as &$user) {
         if ($user['id'] == $id) {
-             $add = $_POST['funds'];
-             $user['funds'] = $user['funds']  + $add;
+            
+            $add = (int) $_POST['amount'];
+            $user['amount'] += $add;
+
             file_put_contents(__DIR__ . '/users.ser', serialize($users));
 
             break;
         }
     }
-
-    header('Location: http://localhost/bankas2/users.php');
-    // die;
+    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'You`ve added funds'];
+    header('Location: http://localhost/bankas2/users.php?id='.$id);
+    die;
 }
 
 
-//GET
-
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+$id = (int) $_GET['id'];
 
-$id = $_GET['id'];
 $find = false;
-foreach ($users as $user) {
+foreach($users as $user) {
     if ($user['id'] == $id) {
         $find = true;
         break;
@@ -33,10 +36,9 @@ foreach ($users as $user) {
 }
 
 if (!$find) {
-    die('user not found');
+    die('User not found');
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -51,6 +53,7 @@ if (!$find) {
     <title>Add funds</title>
 </head>
 <body>
+<?php require __DIR__ . '/menu.php' ?>
     <div class="container">
         <form class="form-create" action="?id=<?= $user['id'] ?>" method="post">
             <h2>Add funds</h2>

@@ -1,1 +1,1 @@
-a:2:{i:1;a:4:{s:2:"id";i:240891;s:7:"account";i:0;s:4:"name";s:5:"masha";s:7:"surname";s:7:"kozlova";}i:2;a:5:{s:2:"id";i:22222222;s:7:"account";i:1111;s:4:"name";s:4:"tima";s:7:"surname";s:7:"golovin";s:5:"funds";i:0;}}
+a:2:{i:11;a:5:{s:2:"id";i:66666;s:7:"account";i:1000001;s:4:"name";s:3:"uuu";s:7:"surname";s:5:"iiiii";s:6:"amount";i:0;}i:12;a:5:{s:2:"id";i:66;s:7:"account";i:1000001;s:4:"name";s:3:"iii";s:7:"surname";s:4:"pppp";s:6:"amount";i:0;}}

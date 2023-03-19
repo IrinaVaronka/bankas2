@@ -3,7 +3,7 @@ $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 $page = (int) ($_GET['page'] ?? 1);
 
-$sort = $_GET['sort'] ?? '';    //сортировка;
+$sort = $_GET['sort'] ?? '';    
 
 if ($sort == 'surname_asc') {
     usort($users, fn($a, $b) => $a['surname'] <=> $b['surname']);
@@ -63,8 +63,8 @@ elseif ($sort == 'surname_desc') {
                     <td><?= $user['account'] ?></td>
                     <td><?= $user['id'] ?></td>
                     <td><?= $user['amount'] ?></td>
-                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/add.php?id=<?= $user['id'] ?>">Add funds</a></th>
-                    <th scope="col"><a class="btn btn-info" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Deduct funds</a></th>
+                    <th scope="col"><a class="btn btn-success" href="http://localhost/bankas2/add.php?id=<?= $user['id'] ?>">Add funds</a></th>
+                    <th scope="col"><a class="btn btn-success" href="http://localhost/bankas2/edit.php?id=<?= $user['id'] ?>">Deduct funds</a></th>
                     
                     </tr>
             
