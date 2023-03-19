@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach($users as &$user) {
         if ($user['id'] == $id) {
             
-            $add = (int) $_POST['amount'];
-            $user['amount'] -= $add;
+            $deduct = (int) $_POST['amount'];
+            $user['amount'] -= $deduct;
 
             file_put_contents(__DIR__ . '/users.ser', serialize($users));
 
@@ -61,7 +61,7 @@ if (!$find) {
             <input type="text" name="name" class="form-control" readonly value="<?= $user['name'] ?>">
             <label>User`s surname: </label>
             <input type="text" name="name" class="form-control" readonly value="<?= $user['surname'] ?>">
-            <label>Add funds, EUR: </label>
+            <label>Deduct funds, EUR: </label>
             <input type="text" name="amount" class="form-control"  value="<?= $user['amount'] ?>">
             <button type="submit" class="btn btn-lg btn-primary btn-block">Deduct</button>
         </form>
