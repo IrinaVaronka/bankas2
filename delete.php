@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id'])) {
     http_response_code(400);
     die;
 }
-session_start();
+
 $id = (int) $_GET['id'];
 
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));

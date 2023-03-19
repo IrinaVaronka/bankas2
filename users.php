@@ -1,4 +1,6 @@
 <?php
+// define('ENTER', true);
+session_start();
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 $page = (int) ($_GET['page'] ?? 1);
@@ -27,7 +29,7 @@ elseif ($sort == 'surname_desc') {
 </head>
 
 <body>
-    <h1>Meniu of Bank</h1>
+    <h1>Menu of Bank</h1>
     <?php require __DIR__ . '/menu.php' ?>
 
     <form action="" method="get">
