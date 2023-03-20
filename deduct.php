@@ -9,16 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     foreach($users as &$user) {
         if ($user['id'] == $id) {
-            
-            $deduct = (int) $_POST['amount'];
-            $user['amount'] -= $deduct;
-
+            if($user['amount'] < $_POST['deduct']) {
+                $_SESSION['msg'] = ['type' => 'error', 'text' => 'Not enough funds in the account'];
+                header('Location: http://localhost/bankas2/users.php?id=');
+                die;
+            }
+            $user['amount'] -= $_POST['deduct'];
             file_put_contents(__DIR__ . '/users.ser', serialize($users));
 
-            break;
+
         }
     }
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'You have added funds'];
+    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'You have deducted funds'];
     header('Location: http://localhost/bankas2/users.php?id='.$id);
     die;
 }
@@ -61,8 +63,10 @@ if (!$find) {
             <input type="text" name="name" class="form-control" readonly value="<?= $user['name'] ?>">
             <label>User`s surname: </label>
             <input type="text" name="name" class="form-control" readonly value="<?= $user['surname'] ?>">
+            <label>User`s amount: </label>
+            <input type="text" name="amount" class="form-control" readonly value="<?= $user['amount'] ?>">
             <label>Deduct funds, EUR: </label>
-            <input type="text" name="amount" class="form-control"  value="<?= $user['amount'] ?>">
+            <input type="text" name="deduct" class="form-control">
             <button type="submit" class="btn btn-lg btn-primary btn-block">Deduct</button>
         </form>
     </div>

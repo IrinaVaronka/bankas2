@@ -1,5 +1,5 @@
 <?php
-// define('ENTER', true);
+define('ENTER', true);
 session_start();
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
@@ -29,7 +29,6 @@ elseif ($sort == 'surname_desc') {
 </head>
 
 <body>
-    <h1>Menu of Bank</h1>
     <?php require __DIR__ . '/menu.php' ?>
 
     <form action="" method="get">

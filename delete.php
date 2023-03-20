@@ -29,4 +29,3 @@ $_SESSION['msg'] = ['type' => 'ok', 'text' => 'User was deleted'];
 header('Location: http://localhost/bankas2/users.php');
 
 
-// pataisyt kad butu negalima istrint su lesu!!
